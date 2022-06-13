@@ -1,10 +1,14 @@
 # emovie
 
-A new Flutter project.
+A movies' Flutter project. For educational puyrposes only!
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+This project is beign updated to Flutter 3.0.
+
+Migrations is not yet Finished. 
+
+The App does NOT work... Be patient
 
 A few resources to get you started if this is your first Flutter project:
 
