@@ -1,12 +1,12 @@
 # emovie
 
-A movies' Flutter project. For educational puyrposes only!
+A movies' Flutter project. For educational purposes only!
 
 ## Getting Started
 
 This project is beign updated to Flutter 3.0.
 
-Migrations is not yet Finished. 
+Migration is not yet Finished. 
 
 The App does NOT work... Be patient
 
