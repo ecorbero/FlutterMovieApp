@@ -3,9 +3,9 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-import '../Model/listmovies.dart';
-import '../Model/movie_details.dart';
-import '../Model/movie_suggestion.dart';
+import '../model/listmovies.dart';
+import '../model/movie_details.dart';
+import '../model/movie_suggestion.dart';
 
 class Api {
   static Future<ListMovies> listMovies({required String genre}) async {
