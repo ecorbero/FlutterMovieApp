@@ -4,11 +4,9 @@ A movies' Flutter project. For educational purposes only!
 
 ## Getting Started
 
-This project is beign updated to Flutter 3.0.
+The purpose of this fork is to udate the original project to Flutter 3.0.
 
-Migration is not yet Finished. 
-
-The App does NOT work... Be patient
+Migration is not yet Finished, but we managed to make it work... to some extent.
 
 A few resources to get you started if this is your first Flutter project:
 
