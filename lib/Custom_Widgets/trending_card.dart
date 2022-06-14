@@ -1,20 +1,21 @@
+// enric corrected 2022JUN14
+
 import '../model/listmovies.dart' as lm;
 import '../screens/detailed_page/detailed_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class TrendingCard extends StatelessWidget {
-  TrendingCard({required this.isInProgress, this.movieModel});
-
   final bool isInProgress;
   final lm.Movie? movieModel;
+  const TrendingCard({required this.isInProgress, required this.movieModel});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
         if (isInProgress == false) {
-          Get.to(DetailedPage(movie: movieModel));
+          Get.to(DetailedPage(movieModel!));
         }
       },
       child: Padding(

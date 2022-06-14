@@ -1,8 +1,10 @@
+// enric corrected 2022JUN14
+
 import '../../api/api.dart';
 import '../../custom_widgets/trending_card.dart';
-import '../../model/listmovies.dart' as lm;
 import 'package:flutter/material.dart';
 import 'package:get/state_manager.dart';
+import '../../model/listmovies.dart' as lm;
 
 class TrendingController extends GetxController {
   TrendingController() {
@@ -10,14 +12,14 @@ class TrendingController extends GetxController {
     getRecentList();
   }
 
-  List<Widget> trendingList = [
+  List<Widget>? trendingList = [
     for (int i = 0; i < 5; i++) _inProgressTrendingCard()
   ];
-// enric
+
   List<lm.Movie> recentList = [];
 
   getRecentList() async {
-    lm.ListMovies listMovies = (await Api.recentMovies()) as lm.ListMovies;
+    lm.ListMovies listMovies = await Api.recentMovies();
     List<lm.Movie> tempList = [];
     for (lm.Movie each in listMovies.data!.movies) {
       tempList.add(each);
@@ -28,8 +30,8 @@ class TrendingController extends GetxController {
   }
 
   getTrendingList() async {
-    lm.ListMovies listMovies = (await Api.trendingMovies()) as lm.ListMovies;
-    List<Widget> tempList = [];
+    lm.ListMovies listMovies = await Api.trendingMovies();
+    List<Widget>? tempList = [];
 
     for (lm.Movie each in listMovies.data!.movies) {
       tempList.add(TrendingCard(isInProgress: false, movieModel: each));
@@ -39,5 +41,8 @@ class TrendingController extends GetxController {
     update();
   }
 
-  static _inProgressTrendingCard() => TrendingCard(isInProgress: true);
+  static _inProgressTrendingCard() => const TrendingCard(
+        isInProgress: true,
+        movieModel: null,
+      );
 }

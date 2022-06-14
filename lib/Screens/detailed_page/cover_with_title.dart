@@ -1,10 +1,12 @@
+// enric corrected 2022JUN14
+
 import '../../model/listmovies.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class CoverWithTitle extends StatelessWidget {
   final Movie movie;
-  const CoverWithTitle(this.movie);
+  CoverWithTitle(this.movie);
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +31,7 @@ class CoverWithTitle extends StatelessWidget {
       onPressed: () {
         Get.back();
       },
-      icon: const Icon(
+      icon: Icon(
         Icons.arrow_back_ios,
         color: Colors.white,
       ),
@@ -42,7 +44,7 @@ class CoverWithTitle extends StatelessWidget {
       child: Container(
         height: Get.height * .25,
         width: Get.width,
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           color: Colors.black,
           borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(20),
@@ -65,13 +67,13 @@ class CoverWithTitle extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               _title(),
-              const SizedBox(
+              SizedBox(
                 height: 10,
               ),
               Row(
                 children: [
                   _review(),
-                  const SizedBox(width: 50),
+                  SizedBox(width: 50),
                   _duration(),
                 ],
               ),
@@ -91,7 +93,7 @@ class CoverWithTitle extends StatelessWidget {
     return RichText(
       text: TextSpan(
           text: movie.titleEnglish,
-          style: const TextStyle(
+          style: TextStyle(
               color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
           children: [
             TextSpan(
@@ -122,19 +124,19 @@ class CoverWithTitle extends StatelessWidget {
 
   Widget _eachGenre(String genre) {
     return Container(
-        padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 2.5),
-        margin: const EdgeInsets.only(right: 10),
+        padding: EdgeInsets.symmetric(horizontal: 5, vertical: 2.5),
+        margin: EdgeInsets.only(right: 10),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(50), color: Colors.black26),
         child: Text(
           genre,
-          style: const TextStyle(fontSize: 12, color: Colors.white),
+          style: TextStyle(fontSize: 12, color: Colors.white),
         ));
   }
 
   Widget _background() {
     return ClipRRect(
-      borderRadius: const BorderRadius.only(
+      borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(20), bottomRight: Radius.circular(20)),
       child: Image.network(
         movie.mediumCoverImage,

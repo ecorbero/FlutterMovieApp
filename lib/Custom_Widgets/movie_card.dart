@@ -1,22 +1,21 @@
+// enric corrected 2022JUN14
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../Model/listmovies.dart';
+import '../model/listmovies.dart';
 import '../Screens/detailed_page/detailed_page.dart';
 import '../utils/custom_color.dart';
 
 class MovieCard extends StatelessWidget {
-  const MovieCard({super.key, required this.movie});
   final Movie movie;
-
-  //final Movie? movie;
-  //DetailedPage({super.key, this.movie});
+  const MovieCard(this.movie);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Get.to(DetailedPage());
+        Get.to(DetailedPage(movie));
       },
       child: Container(
         margin: const EdgeInsets.only(bottom: 20),

@@ -1,3 +1,5 @@
+// enric corrected 2022JUN14
+
 import 'dart:io';
 import 'dart:typed_data';
 import '../../api/api.dart';
@@ -15,8 +17,7 @@ class DetailedPageController extends GetxController {
   List<Cast> casts = [];
 
   _getMovieDetails() async {
-    MovieDetails movieDetails =
-        (await Api.movieDetails(id: id)) as MovieDetails;
+    MovieDetails movieDetails = await Api.movieDetails(id: id);
     casts = movieDetails.data.movie.cast;
     update();
   }

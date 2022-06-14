@@ -1,3 +1,5 @@
+// enric corrected 2022JUN14
+
 import '../../custom_widgets/search_bar.dart';
 import '../../screens/movies/movies_controller.dart';
 import '../../utils/custom_color.dart';
@@ -32,16 +34,13 @@ class Movies extends StatelessWidget {
           Column(
             children: [
               SizedBox(
-                height: MediaQuery.of(Get.context!).padding.top,
+                height: 5,
               ),
               _appbar(),
               _body()
             ],
           ),
-          Positioned(
-              top: 10 + MediaQuery.of(Get.context!).padding.top,
-              right: Get.width * .05,
-              child: _searchBar()),
+          Positioned(top: 10 + 5, right: Get.width * .05, child: _searchBar()),
         ],
       ),
     );
@@ -59,7 +58,7 @@ class Movies extends StatelessWidget {
           width: Get.width,
           decoration: BoxDecoration(
               color: CustomColors.primaryBlue,
-              borderRadius: const BorderRadius.only(
+              borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(20),
                   bottomRight: Radius.circular(20))),
         ),
@@ -147,7 +146,7 @@ class Movies extends StatelessWidget {
     return GetBuilder(
       init: moviesController,
       builder: (_) => SizedBox(
-        height: Get.height * .8 - MediaQuery.of(Get.context!).padding.top,
+        height: Get.height * .8 - 5,
         width: Get.width,
         child: ListView(
           children: moviesController.movieList,

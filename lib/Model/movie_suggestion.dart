@@ -1,3 +1,5 @@
+// enric corrected 2022JUN14
+
 // To parse this JSON data, do
 //
 //     final movieSuggestion = movieSuggestionFromMap(jsonString);
@@ -49,7 +51,7 @@ class Data {
   final int movieCount;
   final int limit;
   final int pageNumber;
-  final List<MovieSug> movies;
+  final List<Movie> movies;
 
   factory Data.fromJson(String str) => Data.fromMap(json.decode(str));
 
@@ -59,8 +61,7 @@ class Data {
         movieCount: json["movie_count"],
         limit: json["limit"],
         pageNumber: json["page_number"],
-        movies:
-            List<MovieSug>.from(json["movies"].map((x) => MovieSug.fromMap(x))),
+        movies: List<Movie>.from(json["movies"].map((x) => Movie.fromMap(x))),
       );
 
   Map<String, dynamic> toMap() => {
@@ -71,8 +72,8 @@ class Data {
       };
 }
 
-class MovieSug {
-  MovieSug({
+class Movie {
+  Movie({
     required this.id,
     required this.url,
     required this.imdbCode,
@@ -128,11 +129,11 @@ class MovieSug {
   final DateTime dateUploaded;
   final int dateUploadedUnix;
 
-  factory MovieSug.fromJson(String str) => MovieSug.fromMap(json.decode(str));
+  factory Movie.fromJson(String str) => Movie.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
-  factory MovieSug.fromMap(Map<String, dynamic> json) => MovieSug(
+  factory Movie.fromMap(Map<String, dynamic> json) => Movie(
         id: json["id"],
         url: json["url"],
         imdbCode: json["imdb_code"],

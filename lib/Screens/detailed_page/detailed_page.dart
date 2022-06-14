@@ -1,3 +1,5 @@
+// enric corrected 2022JUN14
+
 // ignore_for_file: must_be_immutable
 
 import '../../model/listmovies.dart';
@@ -11,11 +13,11 @@ import 'package:get/get.dart';
 
 class DetailedPage extends StatelessWidget {
   DetailedPageController? detailedPageController;
-  final Movie? movie;
-  DetailedPage({super.key, this.movie});
+  final Movie movie;
+  DetailedPage(this.movie);
   @override
   Widget build(BuildContext context) {
-    detailedPageController = DetailedPageController(movie!.id);
+    detailedPageController = DetailedPageController(movie.id);
     return Scaffold(
       body: _body(),
       floatingActionButton: _floatingBtn(),
@@ -36,9 +38,7 @@ class DetailedPage extends StatelessWidget {
     return SimpleDialog(
       contentPadding: const EdgeInsets.all(10),
       title: const Text("Download your movie"),
-      children: [
-        for (var each in movie!.torrents) _eachTorrentDownloader(each)
-      ],
+      children: [for (var each in movie.torrents) _eachTorrentDownloader(each)],
     );
   }
 
@@ -48,7 +48,7 @@ class DetailedPage extends StatelessWidget {
     return MaterialButton(
       minWidth: double.infinity,
       onPressed: () {
-        detailedPageController!.downloadTorrent(movie!.title, torrent.url);
+        detailedPageController!.downloadTorrent(movie.title, torrent.url);
       },
       color: Colors.white,
       child: Row(
@@ -72,8 +72,8 @@ class DetailedPage extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const SizedBox(height: 10),
-          CoverWithTitle(movie!),
+          const SizedBox(height: 5), // enric
+          CoverWithTitle(movie),
           const SizedBox(
             height: 10,
           ),
@@ -173,7 +173,7 @@ class DetailedPage extends StatelessWidget {
                   fontSize: 20)),
           const SizedBox(height: 15),
           Text(
-            movie!.descriptionFull,
+            movie.descriptionFull,
             style: TextStyle(color: Colors.grey.shade700),
           )
         ],
@@ -206,7 +206,7 @@ class DetailedPage extends StatelessWidget {
         mainAxisSize: MainAxisSize.max,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _eachdetailsText(lable: "Release date: ", content: "${movie!.year}"),
+          _eachdetailsText(lable: "Release date: ", content: "${movie.year}"),
           _eachdetailsText(lable: "Director: ", content: ""),
           _eachdetailsText(lable: "Writes: ", content: ""),
         ],
@@ -236,7 +236,7 @@ class DetailedPage extends StatelessWidget {
     return ClipRRect(
         borderRadius: BorderRadius.circular(15),
         child: Image.network(
-          movie!.mediumCoverImage,
+          movie.mediumCoverImage,
           height: Get.height * .3,
           width: Get.width * .35,
           fit: BoxFit.fitHeight,
@@ -252,7 +252,7 @@ class DetailedPage extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Text("${movie!.rating}/10", style: style),
+          Text("${movie.rating}/10", style: style),
           Text(
             "IMDb",
             style: style,

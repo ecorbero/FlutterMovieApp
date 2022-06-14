@@ -1,17 +1,19 @@
+// enric corrected 2022JUN14
+
 import '../api/api.dart';
-import '../Model/movie_suggestion.dart';
+import '../model/movie_suggestion.dart';
 import '../Screens/detailed_page/detailed_page.dart';
 import '../utils/custom_color.dart';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../Model/listmovies.dart';
+import '../model/listmovies.dart' as listmovie;
 
 class SearchBar extends StatelessWidget {
   final SearchBarController searchBarController = SearchBarController();
   final double searchBarWidth;
-  SearchBar({Key? key, required this.searchBarWidth}) : super(key: key);
+  SearchBar({required this.searchBarWidth});
   final border = OutlineInputBorder(borderRadius: BorderRadius.circular(100));
   @override
   Widget build(BuildContext context) {
@@ -55,12 +57,11 @@ class SearchBar extends StatelessWidget {
     );
   }
 
-  Widget _eachSuggestionCard(Movie movie) {
+  Widget _eachSuggestionCard(listmovie.Movie movie) {
     return GestureDetector(
       onTap: () {
         searchBarController.hideSuggestionBox();
-        // enric
-        Get.to(DetailedPage());
+        Get.to(DetailedPage(listmovie.Movie.fromJson(movie.toJson())));
       },
       child: Container(
         padding: const EdgeInsets.all(8),
@@ -120,8 +121,7 @@ class SearchBar extends StatelessWidget {
 class SearchBarController extends GetxController {
   String query = '';
 
-// Enric
-  List<Movie> suggestionList = [];
+  List<listmovie.Movie> suggestionList = [];
 
   onChanged(String val) {
     query = val;
@@ -131,7 +131,8 @@ class SearchBarController extends GetxController {
 
   _getMovieSuggestion() async {
     MovieSuggestion suggestions = await Api.searchMovies(queryTerm: query);
-    List<Movie> movies = suggestions.data.movies.cast<Movie>();
+    List<listmovie.Movie> movies =
+        suggestions.data.movies.cast<listmovie.Movie>();
     suggestionList = movies;
     update();
   }

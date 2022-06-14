@@ -1,3 +1,5 @@
+// enric corrected 2022JUN14
+
 import '../../custom_widgets/search_bar.dart';
 import '../../custom_widgets/trending_card.dart';
 import '../../model/listmovies.dart';
@@ -41,10 +43,7 @@ class Trending extends StatelessWidget {
               ],
             ),
           ),
-          Positioned(
-              left: Get.width * .05,
-              top: MediaQuery.of(Get.context!).padding.top,
-              child: _searchBar()),
+          Positioned(left: Get.width * .05, top: 5, child: _searchBar()),
         ],
       ),
     );
@@ -63,7 +62,7 @@ class Trending extends StatelessWidget {
                     color: CustomColors.primaryBlue,
                     fontSize: 20,
                     fontWeight: FontWeight.bold)),
-            const SizedBox(height: 15),
+            SizedBox(height: 15),
             _recentCards()
           ],
         ),
@@ -78,8 +77,8 @@ class Trending extends StatelessWidget {
         direction: Axis.horizontal,
         alignment: WrapAlignment.start,
         spacing: 20,
-        children: trendingController.recentList.isEmpty
-            ? [const LinearProgressIndicator()]
+        children: trendingController.recentList.length == 0
+            ? [LinearProgressIndicator()]
             : [
                 for (Movie each in trendingController.recentList)
                   _recentCard(each)
@@ -91,7 +90,7 @@ class Trending extends StatelessWidget {
   Widget _recentCard(Movie movie) {
     return GestureDetector(
       onTap: () {
-        Get.to(DetailedPage(movie: movie));
+        Get.to(DetailedPage(movie));
       },
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -106,7 +105,7 @@ class Trending extends StatelessWidget {
                   fit: BoxFit.fitHeight,
                 )),
           ),
-          const SizedBox(
+          SizedBox(
             height: 15,
           ),
           SizedBox(
@@ -125,7 +124,7 @@ class Trending extends StatelessWidget {
   Widget _category() {
     return Column(
       children: [
-        const SizedBox(
+        SizedBox(
           height: 10,
         ),
         _head(),
@@ -154,11 +153,11 @@ class Trending extends StatelessWidget {
 
   Widget _seeMoreBtn() {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+      padding: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
       decoration: BoxDecoration(
           border: Border.all(color: Colors.grey.shade400),
           borderRadius: BorderRadius.circular(50)),
-      child: const Text("See more"),
+      child: Text("See more"),
     );
   }
 
@@ -182,7 +181,7 @@ class Trending extends StatelessWidget {
     );
   }
 
-  Widget _eachCategoryItem({required String text, required IconData iconData}) {
+  Widget _eachCategoryItem({String? text, IconData? iconData}) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -198,7 +197,7 @@ class Trending extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 5),
-        Text(text,
+        Text(text!,
             style: TextStyle(
               color: CustomColors.primaryBlue,
               fontWeight: FontWeight.bold,

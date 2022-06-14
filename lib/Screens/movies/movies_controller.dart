@@ -1,9 +1,11 @@
+// enric corrected 2022JUN14
+
+import 'package:flutter/material.dart';
+import 'package:get/state_manager.dart';
+
 import '../../api/api.dart';
 import '../../custom_widgets/movie_card.dart';
 import '../../model/listmovies.dart';
-import 'package:flutter/material.dart';
-
-import 'package:get/state_manager.dart';
 
 class MoviesController extends GetxController {
   // Color selectedTabColor = CustomColors.orange;
@@ -36,12 +38,11 @@ class MoviesController extends GetxController {
 
   _getMovieList() async {
     ListMovies listMovies =
-        (await Api.listMovies(genre: categoryList[currentIndex])) as ListMovies;
+        await Api.listMovies(genre: categoryList[currentIndex]);
 
-// enric
     List<Widget> _tempList = [];
     for (var eachMovie in listMovies.data!.movies) {
-      //_tempList.add(MovieCard(eachMovie));
+      _tempList.add(MovieCard(eachMovie));
     }
     _movieList = _tempList;
     update();
