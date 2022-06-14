@@ -31,7 +31,7 @@ class CoverWithTitle extends StatelessWidget {
       onPressed: () {
         Get.back();
       },
-      icon: Icon(
+      icon: const Icon(
         Icons.arrow_back_ios,
         color: Colors.white,
       ),
@@ -44,7 +44,7 @@ class CoverWithTitle extends StatelessWidget {
       child: Container(
         height: Get.height * .25,
         width: Get.width,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           color: Colors.black,
           borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(20),
@@ -68,7 +68,7 @@ class CoverWithTitle extends StatelessWidget {
             children: [
               _title(),
               SizedBox(
-                height: 10,
+                height: 12,
               ),
               Row(
                 children: [
@@ -93,7 +93,7 @@ class CoverWithTitle extends StatelessWidget {
     return RichText(
       text: TextSpan(
           text: movie.titleEnglish,
-          style: TextStyle(
+          style: const TextStyle(
               color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
           children: [
             TextSpan(
@@ -124,19 +124,19 @@ class CoverWithTitle extends StatelessWidget {
 
   Widget _eachGenre(String genre) {
     return Container(
-        padding: EdgeInsets.symmetric(horizontal: 5, vertical: 2.5),
-        margin: EdgeInsets.only(right: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 2.5),
+        margin: const EdgeInsets.only(right: 10),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(50), color: Colors.black26),
         child: Text(
           genre,
-          style: TextStyle(fontSize: 12, color: Colors.white),
+          style: const TextStyle(fontSize: 12, color: Colors.white),
         ));
   }
 
   Widget _background() {
     return ClipRRect(
-      borderRadius: BorderRadius.only(
+      borderRadius: const BorderRadius.only(
           bottomLeft: Radius.circular(20), bottomRight: Radius.circular(20)),
       child: Image.network(
         movie.mediumCoverImage,
