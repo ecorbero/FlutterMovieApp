@@ -125,12 +125,14 @@ class SearchBarController extends GetxController {
 
   onChanged(String val) {
     query = val;
+
     update();
     _getMovieSuggestion();
   }
 
   _getMovieSuggestion() async {
     MovieSuggestion suggestions = await Api.searchMovies(queryTerm: query);
+    //print(suggestions.data.movies[0]);
     List<listmovie.Movie> movies =
         suggestions.data.movies.cast<listmovie.Movie>();
     suggestionList = movies;

@@ -4,8 +4,8 @@
 //
 //     final movieSuggestion = movieSuggestionFromMap(jsonString);
 
-import 'package:meta/meta.dart';
 import 'dart:convert';
+import '../model/listmovies.dart' as listmovie;
 
 class MovieSuggestion {
   MovieSuggestion({
@@ -51,7 +51,7 @@ class Data {
   final int movieCount;
   final int limit;
   final int pageNumber;
-  final List<Movie> movies;
+  final List<listmovie.Movie> movies;
 
   factory Data.fromJson(String str) => Data.fromMap(json.decode(str));
 
@@ -61,7 +61,8 @@ class Data {
         movieCount: json["movie_count"],
         limit: json["limit"],
         pageNumber: json["page_number"],
-        movies: List<Movie>.from(json["movies"].map((x) => Movie.fromMap(x))),
+        movies: List<listmovie.Movie>.from(
+            json["movies"].map((x) => listmovie.Movie.fromMap(x))),
       );
 
   Map<String, dynamic> toMap() => {
@@ -72,8 +73,9 @@ class Data {
       };
 }
 
-class Movie {
-  Movie({
+/*
+class Movie2 {
+  Movie2({
     required this.id,
     required this.url,
     required this.imdbCode,
@@ -129,11 +131,11 @@ class Movie {
   final DateTime dateUploaded;
   final int dateUploadedUnix;
 
-  factory Movie.fromJson(String str) => Movie.fromMap(json.decode(str));
+  factory Movie2.fromJson(String str) => Movie2.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
-  factory Movie.fromMap(Map<String, dynamic> json) => Movie(
+  factory Movie2.fromMap(Map<String, dynamic> json) => Movie2(
         id: json["id"],
         url: json["url"],
         imdbCode: json["imdb_code"],
@@ -192,7 +194,7 @@ class Movie {
         "date_uploaded_unix": dateUploadedUnix,
       };
 }
-
+*/
 enum Language { EN, RU, ES, JA }
 
 final languageValues = EnumValues({
@@ -315,9 +317,7 @@ class EnumValues<T> {
   EnumValues(this.map);
 
   Map<T, String>? get reverse {
-    if (reverseMap == null) {
-      reverseMap = map!.map((k, v) => new MapEntry(v, k));
-    }
+    reverseMap ??= map!.map((k, v) => new MapEntry(v, k));
     return reverseMap;
   }
 }

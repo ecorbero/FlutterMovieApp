@@ -1,18 +1,15 @@
 # emovie
 
-A movies' Flutter project. For educational purposes only!
+A movies' torrent downloader Flutter project. For educational purposes only!
 
 ## Getting Started
 
-The purpose of this fork is to udate the original project to Flutter 3.0.
+1. Clone the Project
+2. Install the dependencies => "flutter pub get"
+3. Run on Android Emulator, or Build app (=> "flutter build apk")
 
-Migration is not yet Finished, but we managed to make it work... to some extent.
+## To Do
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+1. Check .torrent file is actually downloaded!
+2. After downloading the .torrent file, open a torrent downloader app
+3. Solve the problems with RenderFlex overflows
